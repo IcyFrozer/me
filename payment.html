@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href="dollar-round-icon--18.png" type="png">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            font-size: 24px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px;
+            background-color: white;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            border-radius: 20px;
+        }
+
+        .payment-options {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+        }
+
+        .payment-option {
+            flex: 1;
+            text-align: center;
+            padding: 40px;
+            border: 2px solid #333;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .payment-option:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .payment-option img {
+            width: 200px;
+            height: 200px;
+            margin-bottom: 20px;
+        }
+
+        .payment-option a {
+            text-decoration: none;
+            color: #333;
+        }
+
+        .payment-info {
+            font-size: 16px;
+            margin-top: 20px;
+        }
+
+        /* Full-screen overlay for the QR code */
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+
+        .overlay.active {
+            display: flex;
+        }
+
+        .popup {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        .popup img {
+            max-width: 100%;
+        }
+
+        .payment-button {
+            background-color: #333;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-size: 20px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            margin-top: 20px;
+        }
+
+        .payment-button:hover {
+            background-color: #555;
+            transform: scale(1.1);
+        }
+
+        /* Additional styles for the buttons */
+        .payment-button-1 {
+            background-color: #4CAF50; /* Green */
+        }
+
+        .payment-button-2 {
+            background-color: #3498DB; /* Blue */
+        }
+        .payment-button-3 {
+            background-color: orange; /* Green */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        Payment Page
+    </header>
+    
+    <div class="container">
+        <div class="payment-options">
+            <div class="payment-option direct-payment">
+                <img src="qr scan" alt="QR Code">
+                <p>Scan QR Code to Pay</p>
+                <h3 style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Pay And Send Screenshot To</h3><h3 style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Instagram</h3>
+                <button class="payment-button payment-button-1" onclick="showQRCode()">Pay Now</button>
+                <br>
+                <a href="https://www.instagram.com/sourajworks/">
+                <button class="payment-button payment-button-3">Send Screenshot</button>
+            </a>
+            </div>
+            <div class="payment-option indirect-payment">
+                <img src="Money.png" alt="Money">
+                <p>Indirect Payment</p>
+                <p>Discuss And Pay</p>
+                <a href="https://www.instagram.com/sourajworks/">
+                <button class="payment-button payment-button-2" onclick="showPaymentLink()">Instagram   </button>
+            </a>
+               
+            </div>
+        </div>
+        <div class="payment-info">
+            <p>For any inquiries or assistance, please contact our customer support at [krishnasouraj@gmail.com]</p>
+        </div>
+    </div>
+    <!-- Full-screen overlay for the QR code -->
+    <div class="overlay" id="qr-overlay">
+        <div class="popup">
+            <img src="demoqr.ppm" alt="QR Code">
+            <p>Scan this QR code with your mobile banking app to complete the payment.</p>
+            <button class="payment-button" onclick="hideQRCode()">Close</button>
+        </div>
+    </div>
+
+    <script>
+        function showQRCode() {
+            document.getElementById('qr-overlay').classList.add('active');
+        }
+
+        function hideQRCode() {
+            document.getElementById('qr-overlay').classList.remove('active');
+        }
+
+        function showPaymentLink() {
+            document.querySelector('.indirect-payment').classList.add('active');
+        }
+    </script>
+</body>
+</html>
